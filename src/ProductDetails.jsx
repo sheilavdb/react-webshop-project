@@ -2,6 +2,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import { CartContext } from "./CartContext";
+import { StarIcon } from "@heroicons/react/16/solid";
 import axios from "axios";
 
 function ProductDetails() {
@@ -21,10 +22,15 @@ function ProductDetails() {
       <img src={product.thumbnail} alt={product.title} />
       <div>
         <h2>{product.title}</h2>
+        <p>
+          Rating: <StarIcon className="star-icon" /> {product.rating}
+        </p>
         <p>{product.description}</p>
         <p>Pris: {product.price} kr</p>
         <input type="number" value={quantity} onChange={(e) => setQuantity(Number(e.target.value))} min={1} />
-        <button onClick={() => addToCart(product, quantity)}>Add to Cart</button>
+        <button className="Bttn" onClick={() => addToCart(product, quantity)}>
+          Add to Cart
+        </button>
       </div>
     </div>
   );
