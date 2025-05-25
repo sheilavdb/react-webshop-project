@@ -7,6 +7,7 @@ import { CartProvider } from "./CartProvider";
 import Checkout from "./Checkout";
 import "./index.css";
 import ProductsPage from "./ProductsPage";
+import Footer from "./Footer";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
         </Routes>
+        <Footer />
       </CartProvider>
     </Router>
   );

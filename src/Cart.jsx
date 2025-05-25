@@ -1,17 +1,18 @@
 //The shopping Cart
-import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { CartContext } from "./CartContext";
+import { useCart } from "./CartContext";
 
 function Cart() {
-  const { cartItems = [], addToCart, removeFromCart, decreaseQuantity, clearCart } = useContext(CartContext);
+  const { cartItems = [], addToCart, removeFromCart, decreaseQuantity, clearCart } = useCart();
 
+  const cartIsEmpty = cartItems.length === 0;
   const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
     <div className="cartContainer">
       <h2 className="cartTitle">Shopping Cart</h2>
-      {cartItems.length === 0 ? (
+
+      {cartIsEmpty ? (
         <p className="cartEmpty">Your shopping cart is empty.</p>
       ) : (
         cartItems.map((item) => (
@@ -32,14 +33,19 @@ function Cart() {
         ))
       )}
       <h3 className="cartTotal">Total price: {total.toFixed(2)} kr</h3>
+
       <div className="checkoutButtons">
-        <Link to="/checkout" className="checkoutLink">
+        <Link to={cartIsEmpty ? "#" : "/checkout"} className={`checkoutLink ${cartIsEmpty ? "disabled" : ""}`} onClick={(e) => cartIsEmpty && e.preventDefault()}>
           Go to checkout
         </Link>
-        <button onClick={clearCart} className="clearCartButton">
+        <Link to="/" className="clearCartButton">
+          Continue shopping
+        </Link>
+        <button onClick={clearCart} className="clearCartButton" disabled={cartIsEmpty}>
           Empty Cart
         </button>
       </div>
+      {cartIsEmpty && <p className="checkoutError">Add items to your cart</p>}
     </div>
   );
 }

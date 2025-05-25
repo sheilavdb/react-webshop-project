@@ -1,3 +1,4 @@
+//Filters and sorting optioin for products
 import React, { useState, useEffect } from "react";
 
 function Filters({ products, onFiltered }) {
@@ -25,9 +26,9 @@ function Filters({ products, onFiltered }) {
   }, [searchTerm, sortOption, products, onFiltered]);
 
   return (
-    <div className="search-filter-container" style={{ display: "flex", gap: 10, marginBottom: 20 }}>
-      <input type="text" placeholder="Search products..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} style={{ flexGrow: 1, padding: 8, fontSize: 16 }} />
-      <select value={sortOption} onChange={(e) => setSortOption(e.target.value)} style={{ padding: 8, fontSize: 16 }}>
+    <div className="search-filter-container">
+      <input type="text" placeholder="Search products..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} style={{ flexGrow: 1 }} />
+      <select value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
         <option value="">Sort By</option>
         <option value="price-low-high">Price: Low to High</option>
         <option value="price-high-low">Price: High to Low</option>

@@ -1,4 +1,9 @@
-// The functions to make the cart work
+// The state and logic for the cart
+
+/*CartContext = a mailbox you install (the communication line)
+CartProvider = the mailman who fills it with letters (the data and logic)
+useContext(CartContext) = the person checking the mailbox (your components accessing the cart)*/
+
 import { useState } from "react";
 import { CartContext } from "./CartContext";
 
