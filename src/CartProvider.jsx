@@ -4,11 +4,19 @@
 CartProvider = the mailman who fills it with letters (the data and logic)
 useContext(CartContext) = the person checking the mailbox (your components accessing the cart)*/
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CartContext } from "./CartContext";
 
-export const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState([]);
+export function CartProvider({ children }) {
+  const [cartItems, setCartItems] = useState(() => {
+    // Load from localStorage on first render
+    const storedCart = localStorage.getItem("cartItems");
+    return storedCart ? JSON.parse(storedCart) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
 
   const addToCart = (product, quantity) => {
     setCartItems((prev) => {
@@ -33,5 +41,5 @@ export const CartProvider = ({ children }) => {
 
   const clearCart = () => setCartItems([]);
 
-  return <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, clearCart, decreaseQuantity }}>{children}</CartContext.Provider>;
-};
+  return <CartContext.Provider value={{ cartItems, setCartItems, addToCart, removeFromCart, clearCart, decreaseQuantity }}>{children}</CartContext.Provider>;
+}

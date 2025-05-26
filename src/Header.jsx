@@ -11,9 +11,9 @@ function Header() {
   const numberOfItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   return (
     <header className="header">
-      <a href="/">
+      <Link to="/">
         <img src="https://level-level.com/nl/wp-content/uploads/sites/2/2021/12/Coolblue-logo.jpg" alt="coolblue" className="header-logo" />
-      </a>
+      </Link>
       <nav className="header-nav">
         <Link to="/" className="nav-link">
           Products
