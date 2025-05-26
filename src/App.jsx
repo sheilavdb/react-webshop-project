@@ -8,6 +8,7 @@ import Checkout from "./Checkout";
 import "./index.css";
 import ProductsPage from "./ProductsPage";
 import Footer from "./Footer";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
         </Routes>
         <Footer />
+        <ToastContainer position="bottom-center" autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick={false} rtl={false} pauseOnFocusLoss={false} draggable pauseOnHover={false} theme="colored" />
       </CartProvider>
     </Router>
   );

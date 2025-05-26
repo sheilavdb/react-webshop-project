@@ -13,7 +13,7 @@ function ProductCard({ product }) {
       <p>{product.price} kr</p>
       <div className="cardButtons">
         <Link to={`/product/${product.id}`}>
-          <button>Show more..</button>
+          <button>Info</button>
         </Link>
         <button onClick={() => addToCart(product, 1)}>Add to Cart</button>
       </div>

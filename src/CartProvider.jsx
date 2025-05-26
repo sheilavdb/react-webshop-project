@@ -6,6 +6,7 @@ useContext(CartContext) = the person checking the mailbox (your components acces
 
 import { useEffect, useState } from "react";
 import { CartContext } from "./CartContext";
+import { toast } from "react-toastify";
 
 export function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState(() => {
@@ -21,11 +22,21 @@ export function CartProvider({ children }) {
   const addToCart = (product, quantity) => {
     setCartItems((prev) => {
       const exists = prev.find((item) => item.id === product.id);
+      let updatedCart;
+
       if (exists) {
-        return prev.map((item) => (item.id === product.id ? { ...item, quantity: item.quantity + quantity } : item));
+        updatedCart = prev.map((item) => (item.id === product.id ? { ...item, quantity: item.quantity + quantity } : item));
       } else {
-        return [...prev, { ...product, quantity }];
+        updatedCart = [...prev, { ...product, quantity }];
       }
+
+      return updatedCart;
+    });
+
+    toast.success(`${product.title} added to cart!`, {
+      autoClose: 2000,
+      position: "bottom-center",
+      theme: "colored",
     });
   };
 
@@ -41,5 +52,5 @@ export function CartProvider({ children }) {
 
   const clearCart = () => setCartItems([]);
 
-  return <CartContext.Provider value={{ cartItems, setCartItems, addToCart, removeFromCart, clearCart, decreaseQuantity }}>{children}</CartContext.Provider>;
+  return <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, clearCart, decreaseQuantity }}>{children}</CartContext.Provider>;
 }
