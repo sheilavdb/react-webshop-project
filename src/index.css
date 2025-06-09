@@ -438,9 +438,28 @@ a:hover {
   font-family: sans-serif;
 }
 
-.listItem {
-  list-style-type: none;
-  margin: 5px;
+.itemList {
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 12px;
+}
+
+.itemTitle {
+  text-align: left;
+  padding: 5px 10px;
+}
+
+.itemQuantity {
+  text-align: center;
+}
+
+.itemPrice {
+  text-align: right;
+}
+
+.totalPrice {
+  text-align: right;
+  padding-right: 4px;
 }
 
 /*Footer*/

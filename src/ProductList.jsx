@@ -1,3 +1,4 @@
+// Shows all products as a list
 import ProductCard from "./ProductCard";
 
 function ProductList({ products }) {

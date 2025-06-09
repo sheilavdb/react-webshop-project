@@ -31,7 +31,7 @@ function Checkout() {
     return (
       <div>
         <p className="ordered">
-          Thanks for your order, {name}! A confirmation has sent to your email. <br />
+          Thanks for your order, {name}! A confirmation has been sent to your email. <br />
           <br />
           <Link to="/" className="checkoutButton">
             Shop More
@@ -46,15 +46,24 @@ function Checkout() {
       {cartIsEmpty ? (
         <p>Cart is empty..</p>
       ) : (
-        <ul>
+        <table className="itemList">
+          <tr>
+            <th className="itemTitle">Item</th>
+            <th className="itemQuantity">Quantity</th>
+            <th className="itemPrice">Price</th>
+          </tr>
           {cartItems.map((item) => (
-            <li className="listItem" key={item.id}>
-              {item.title} × {item.quantity} = {(item.price * item.quantity).toFixed(2)} kr
-            </li>
+            <tr key={item.id}>
+              <td className="itemTitle">{item.title}</td>
+              <td className="itemQuantity">{item.quantity}</td>
+              <td className="itemPrice">{item.price.toFixed(2)} kr</td>
+            </tr>
           ))}
-        </ul>
+        </table>
       )}
-      <p>Total: {total.toFixed(2)} kr</p>
+      <p className="totalPrice">
+        <strong>Total price:</strong> {total.toFixed(2)} kr
+      </p>
       <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} className="checkoutInput" />
       <input type="text" placeholder="Address" value={address} onChange={(e) => setAddress(e.target.value)} className="checkoutInput" />
       <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} className="checkoutInput" />

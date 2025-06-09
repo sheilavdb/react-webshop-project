@@ -1,3 +1,4 @@
+//Gathers Filters and Productlist on the main page
 import { useEffect, useState } from "react";
 import axios from "axios";
 

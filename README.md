@@ -1,6 +1,6 @@
 **React Webshop Project**
 
-This is a webshop application built with React/Vite. The project shows fundamental frontend skills, including components, a hook, routing, state management, and dynamic rendering.
+This is a webshop application built with React/Vite. The project shows frontend skills, including components, a hook, routing, state management, and dynamic rendering.
 
 **Installation**
 To run this project locally, follow the steps below.
@@ -35,11 +35,12 @@ This will start the app in development mode. Open [http://localhost:5173] in you
 **Project Structure**
 
 - `src/`: Source code of the application
-- `public/`: Static assets
 - `package.json`: Project configuration and dependencies
 
 **Reviewing**
 
-1. Clone the repo using the instructions above.
+1. Clone the repository using the instructions above.
 2. Install dependencies and start the development server.
 3. Review the code inside the `src/` directory for component structure, logic, and design.
+
+**HAPPY SHOPPING!!**
